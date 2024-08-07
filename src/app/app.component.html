@@ -1,0 +1,61 @@
+<div id="main">
+  <div id="content">
+    <h1>Registration Form</h1>
+    <form [formGroup]="formGroup" (ngSubmit)="save()">
+      <input type="text" formControlName="name" placeholder="Name" /> <br />
+      <p id="error" *ngIf="name.touched">
+        <span *ngIf="!name.valid">
+          *Name should be at least 5 characters long.</span
+        >
+      </p>
+      <input type="text" formControlName="email" placeholder="Email Address" />
+      <br />
+      <p id="error" *ngIf="email.touched">
+        <span *ngIf="!email.valid">*Enter a Valid Email id.</span>
+      </p>
+      <input type="text" formControlName="country" placeholder="Country" />
+      <br />
+      <p id="error" *ngIf="country.touched">
+        <span *ngIf="!country.valid">*Country is required.</span>
+      </p>
+
+      <input type="text" formControlName="phoneno" placeholder="Phone" /> <br />
+      <p id="error" *ngIf="phoneno.touched">
+        <span *ngIf="!phoneno.valid"
+          >*Phone number must be 10 digits long.</span
+        >
+      </p>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <br />
+      <p id="error" *ngIf="password.touched">
+        <span *ngIf="!password.valid">*Must Set a proper password.</span>
+      </p>
+
+      <p>
+        <input formControlName="finalcheck" type="checkbox" /> I accept terms &
+        conditions
+      </p>
+      <p id="error">
+        <span *ngIf="!finalcheck.valid"
+          >*You must accept the terms and conditions.</span
+        >
+      </p>
+      <button
+        [disabled]="
+          !name.valid ||
+          !email.valid ||
+          !country.valid ||
+          !phoneno.valid ||
+          !password.valid ||
+          !finalcheck.valid
+        "
+      >
+        Create Account
+      </button>
+    </form>
+  </div>
+</div>
